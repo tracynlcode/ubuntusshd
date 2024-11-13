@@ -21,7 +21,7 @@ RUN apt-get update \
     && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
     && echo "PermitRootLogin no" >> /etc/ssh/sshd_config
     
-RUN adduser -D -g $SSH_USERNAME -h /app -s /bin/sh $SSH_USERNAME
+#RUN adduser -D -g $SSH_USERNAME -h /app -s /bin/sh $SSH_USERNAME
 USER $SSH_USERNAME:$SSH_USERNAME
 
 # Copy the script to configure the user's password and authorized keys
