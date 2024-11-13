@@ -5,6 +5,7 @@ FROM --platform=linux/arm64 ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV SSH_USERNAME="ubuntu"
 ENV SSHD_CONFIG_ADDITIONAL=""
+ENV PORT=22
 
 # Install OpenSSH server, clean up, create directories, set permissions, and configure SSH
 RUN apt-get update \
@@ -29,7 +30,7 @@ COPY configure-ssh-user.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/configure-ssh-user.sh
 
 # Expose SSH port
-EXPOSE 22
+EXPOSE $PORT
 
 # Start SSH server
 CMD ["/usr/local/bin/configure-ssh-user.sh"]
