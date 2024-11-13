@@ -1,5 +1,5 @@
 # Use an official Ubuntu base image
-FROM ubuntu:24.04
+FROM --platform=linux/arm64 ubuntu:24.04
 
 # Set environment variables to avoid interactive prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
