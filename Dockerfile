@@ -5,7 +5,7 @@ FROM --platform=linux/arm64 ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV SSH_USERNAME="ubuntu"
 ENV SSHD_CONFIG_ADDITIONAL=""
-ENV PORT=22
+ENV SSH_PORT=""
 
 # Install OpenSSH server, clean up, create directories, set permissions, and configure SSH
 RUN apt-get update \
@@ -23,14 +23,14 @@ RUN apt-get update \
     && echo "PermitRootLogin no" >> /etc/ssh/sshd_config
     
 #RUN adduser -D -g $SSH_USERNAME -h /app -s /bin/sh $SSH_USERNAME
-USER $SSH_USERNAME:$SSH_USERNAME
+#USER $SSH_USERNAME:$SSH_USERNAME
 
 # Copy the script to configure the user's password and authorized keys
 COPY configure-ssh-user.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/configure-ssh-user.sh
 
 # Expose SSH port
-EXPOSE $PORT
+EXPOSE $SSH_PORT 22
 
 # Start SSH server
 CMD ["/usr/local/bin/configure-ssh-user.sh"]
