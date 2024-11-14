@@ -5,7 +5,7 @@ FROM --platform=linux/arm64 ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV SSH_USERNAME="ubuntu"
 ENV SSHD_CONFIG_ADDITIONAL=""
-ENV SSH_PORT=""
+ENV SSH_PORT="2222"
 
 # Install OpenSSH server, clean up, create directories, set permissions, and configure SSH
 RUN apt-get update \
